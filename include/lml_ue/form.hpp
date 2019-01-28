@@ -3,6 +3,7 @@
 #include <lml_ue/control.hpp>
 #include <lml_ue/point.hpp>
 
+#include <cstdint>
 #include <memory>
 #include <Windows.h>
 
@@ -10,7 +11,7 @@ namespace lml_ue
 {
 	class form : public control
 	{
-		friend class application;
+		friend std::uint32_t initialize(HINSTANCE instance) noexcept;
 
 	public:
 		form(const form&) = delete;
