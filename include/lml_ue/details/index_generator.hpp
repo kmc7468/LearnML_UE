@@ -9,7 +9,7 @@ namespace lml_ue::details
 	class index_generator final
 	{
 	public:
-		index_generator() noexcept = default;
+		index_generator() = default;
 		index_generator(const index_generator& generator);
 		~index_generator() = default;
 
