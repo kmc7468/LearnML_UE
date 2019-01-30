@@ -28,8 +28,16 @@ namespace lml_ue
 		HWND initialize_form_();
 
 	public:
-		point maximum_size;
-		point minimum_size;
+		point maximum_size() const noexcept;
+		void maximum_size(const point& new_maximum_size) noexcept;
+		void maximum_size(std::int32_t w, std::int32_t h) noexcept;
+		point minimum_size() const noexcept;
+		void minimum_size(const point& new_minimum_size) noexcept;
+		void minimum_size(std::int32_t w, std::int32_t h) noexcept;
+
+	private:
+		point maximum_size_;
+		point minimum_size_;
 
 	private:
 		static LRESULT CALLBACK wnd_proc_(HWND handle, UINT message, WPARAM wparam, LPARAM lparam);
