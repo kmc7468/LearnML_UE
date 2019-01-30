@@ -14,17 +14,15 @@ namespace lml_ue
 		friend std::uint32_t initialize(HINSTANCE instance) noexcept;
 
 	public:
+		form();
 		form(const form&) = delete;
 		virtual ~form() override = default;
-
-	protected:
-		form();
 
 	public:
 		form& operator=(const form&) = delete;
 
 	protected:
-		virtual LRESULT CALLBACK wnd_proc(HWND handle, UINT message, WPARAM wparam, LPARAM lparam);
+		virtual LRESULT CALLBACK wnd_proc(HWND handle, UINT message, WPARAM wparam, LPARAM lparam) override;
 
 	private:
 		HWND initialize_form_();

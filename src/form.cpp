@@ -29,8 +29,15 @@ namespace lml_ue
 			return 0;
 		}
 
+		case WM_COMMAND:
+		{
+			const std::uint64_t index = static_cast<std::uint64_t>(LOWORD(wparam));
+			get_control(index)->clicked();
+			return 0;
+		}
+
 		default:
-			return DefWindowProc(handle, message, wparam, lparam);
+			return control::wnd_proc(handle, message, wparam, lparam);
 		}
 	}
 
