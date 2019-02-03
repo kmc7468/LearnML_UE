@@ -87,15 +87,32 @@ namespace lml_ue
 	{
 		switch (message)
 		{
+		case WM_LBUTTONDOWN:
+			mouse_downed_ = true; break;
+
+		case WM_LBUTTONUP:
+			if (mouse_downed_)
+			{
+				mouse_downed_ = false;
+				clicked();
+			}
+			break;
+
+		case WM_MOUSELEAVE:
+			mouse_downed_ = false;
+			break;
+
 		default:
 			return DefWindowProc(handle, message, wparam, lparam);
 		}
+
+		return 0;
 	}
 
 	HWND control::initialize_control_()
 	{
 		HWND handle;
-		if ((handle = CreateWindow(TEXT("control"), TEXT(""), WS_CHILD | WS_VISIBLE, CW_USEDEFAULT, CW_USEDEFAULT, 980, 680,
+		if ((handle = CreateWindow(TEXT("control"), TEXT(""), WS_CHILD | WS_VISIBLE, 0, 0, 100, 50,
 			parent_, id_, instance, nullptr)) == nullptr) throw LML_UE_ERRORCODE_FAILED_TO_CREATE_CONTROL;
 		
 		SetLastError(0);

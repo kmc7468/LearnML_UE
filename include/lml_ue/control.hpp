@@ -54,6 +54,8 @@ namespace lml_ue
 		HWND parent_ = nullptr;
 		HMENU id_ = nullptr;
 
+		bool mouse_downed_ = false;
+
 		std::map<std::uint64_t, std::shared_ptr<control>> controls_;
 		details::index_generator controls_ig_;
 
