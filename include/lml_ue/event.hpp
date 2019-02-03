@@ -57,9 +57,10 @@ namespace lml_ue
 		{
 			return a.id_ != b.id_;
 		}
-		Result_ operator()(Args_&&... args) const
+		template<typename... Args2_>
+		Result_ operator()(Args2_&&... args) const
 		{
-			return function_(std::forward<Args_>(args)...);
+			return function_(std::forward<Args2_>(args)...);
 		}
 
 	private:
@@ -113,9 +114,10 @@ namespace lml_ue
 		{
 			return a.id_ != b.id_;
 		}
-		void operator()(Args_&&... args) const
+		template<typename... Args2_>
+		void operator()(Args2_&&... args) const
 		{
-			function_(std::forward<Args_>(args)...);
+			function_(std::forward<Args2_>(args)...);
 		}
 
 	private:
@@ -139,13 +141,14 @@ namespace lml_ue
 
 	public:
 		event& operator=(const event&) = delete;
-		std::vector<Result_> operator()(Args_&&... args) const
+		template<typename... Args2_>
+		std::vector<Result_> operator()(Args2_&&... args) const
 		{
 			std::vector<Result_> result(handlers_.size());
 
 			for (std::size_t i = 0; i < result.size(); ++i)
 			{
-				result[i] = handlers_[i](std::forward<Args_>(args)...);
+				result[i] = handlers_[i](std::forward<Args2_>(args)...);
 			}
 			
 			return result;
@@ -183,11 +186,12 @@ namespace lml_ue
 
 	public:
 		event& operator=(const event&) = delete;
-		void operator()(Args_&&... args) const
+		template<typename... Args2_>
+		void operator()(Args2_&&... args) const
 		{
 			for (const handler& h : handlers_)
 			{
-				h(std::forward<Args_>(args)...);
+				h(std::forward<Args2_>(args)...);
 			}
 		}
 		event& operator+=(const handler& handler)

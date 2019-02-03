@@ -50,6 +50,7 @@ namespace lml_ue
 		event<void()> clicked;
 		event<void()> mouse_enter;
 		event<void()> mouse_leave;
+		event<void(HDC)> paint;
 	
 	private:
 		HWND handle_ = nullptr;

@@ -106,6 +106,15 @@ namespace lml_ue
 			mouse_leave();
 			break;
 
+		case WM_PAINT:
+		{
+			PAINTSTRUCT ps;
+			HDC dc = BeginPaint(handle, &ps);
+			paint(dc);
+			EndPaint(handle, &ps);
+			break;
+		}
+
 		default:
 			return DefWindowProc(handle, message, wparam, lparam);
 		}
