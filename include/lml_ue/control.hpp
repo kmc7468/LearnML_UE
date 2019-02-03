@@ -48,6 +48,8 @@ namespace lml_ue
 
 	public:
 		event<void()> clicked;
+		event<void()> mouse_enter;
+		event<void()> mouse_leave;
 	
 	private:
 		HWND handle_ = nullptr;

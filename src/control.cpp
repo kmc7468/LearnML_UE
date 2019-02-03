@@ -98,8 +98,12 @@ namespace lml_ue
 			}
 			break;
 
+		case WM_MOUSEHOVER:
+			mouse_enter();
+
 		case WM_MOUSELEAVE:
 			mouse_downed_ = false;
+			mouse_leave();
 			break;
 
 		default:
